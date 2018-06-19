@@ -1,0 +1,16 @@
+{
+  "name": "react-native-launch-navigator",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://dpa99c@bitbucket.org/dpa99c/react-native-launch-navigator.git"
+  },
+  "author": "Dave Alden",
+  "license": "ISC",
+  "homepage": "https://bitbucket.org/dpa99c/react-native-launch-navigator#readme"
+}

@@ -1,0 +1,17 @@
+apply plugin: 'com.android.library'
+
+def DEFAULT_COMPILE_SDK_VERSION             = 27
+def DEFAULT_BUILD_TOOLS_VERSION             = "27"
+def DEFAULT_OK_HTTP_VERSION                 = "3.10.0"
+
+android {
+    compileSdkVersion project.hasProperty('compileSdkVersion') ? project.compileSdkVersion : DEFAULT_COMPILE_SDK_VERSION
+    buildToolsVersion project.hasProperty('buildToolsVersion') ? project.buildToolsVersion : DEFAULT_BUILD_TOOLS_VERSION
+}
+
+dependencies {
+    def okHttpVersion = project.hasProperty('okHttpVersion') ? project.okHttpVersion : DEFAULT_OK_HTTP_VERSION
+    
+    compile 'com.facebook.react:react-native:+'
+    compile "com.squareup.okhttp3:okhttp:$okHttpVersion"
+}
