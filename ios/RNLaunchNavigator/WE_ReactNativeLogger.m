@@ -1,21 +1,29 @@
-#import "WE_CordovaLogger.h"
+#import "WE_ReactNativeLogger.h"
+#import <React/RCTConvert.h>
 
-@implementation WE_CordovaLogger
-@synthesize commandDelegate;
+@implementation WE_ReactNativeLogger;
+@synthesize eventEmitter;
 @synthesize logTag;
 
 /**********************
 * Internal properties
 **********************/
-
+static NSArray* eventNames;
 
 /*******************
 * Public API
 *******************/
-- (id)initWithDelegate:(id <CDVCommandDelegate>)commandDelegate logTag:(NSString*)logTag{
+-(id)init:(RCTEventEmitter <RCTBridgeModule>*)eventEmitter logTag:(NSString*)logTag{
     if(self = [super init]){
-        self.commandDelegate = commandDelegate;
-        self.logTag = logTag;
+      self.eventEmitter = eventEmitter;
+      self.logTag = logTag;
+      eventNames = @[
+        @"console.error",
+        @"console.warn",
+        @"console.info",
+        @"console.log",
+        @"console.debug"
+      ];
     }
     return self;
 }
@@ -40,26 +48,18 @@
     [self log:msg jsLogLevel:@"debug" nsLogLevel:@"verbose"];
 }
 
+-(NSArray*)getEventNames{
+  return eventNames;
+}
+
 /*********************
 *  Internal functions
 **********************/
-- (void)executeGlobalJavascript: (NSString*)jsString
-{
-    [self.commandDelegate evalJs:jsString];
-}
-
-- (NSString*)escapeDoubleQuotes: (NSString*)str
-{
-    NSString *result =[str stringByReplacingOccurrencesOfString: @"\"" withString: @"\\\""];
-    return result;
-}
-
 - (void)log: (NSString*)msg jsLogLevel:(NSString*)jsLogLevel nsLogLevel:(NSString*)nsLogLevel
 {
     if(self.enabled){
-        NSLog(@"%@[%@]: %@", self.logTag, nsLogLevel, msg);
-        NSString* jsString = [NSString stringWithFormat:@"console.%@(\"%@: %@\")", jsLogLevel, self.logTag, [self escapeDoubleQuotes:msg]];
-        [self executeGlobalJavascript:jsString];
+      NSLog(@"%@[%@]: %@", self.logTag, nsLogLevel, msg);
+      [self.eventEmitter sendEventWithName:[NSString stringWithFormat:@"console.%@",jsLogLevel] body:@{@"logTag": [RCTConvert NSString:self.logTag], @"message": [RCTConvert NSString:msg]}];
     }
 }
 @end

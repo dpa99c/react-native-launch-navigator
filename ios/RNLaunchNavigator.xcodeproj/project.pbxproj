@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		5544C0A720B8B06300C34D72 /* RNLaunchNavigator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5544C0A620B8B06300C34D72 /* RNLaunchNavigator.m */; };
+		55C2978820DF9EE500475C12 /* LN_LaunchNavigator.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C2977F20DF9EE400475C12 /* LN_LaunchNavigator.m */; };
+		55C2978A20DF9EE500475C12 /* WE_ReactNativeLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C2978220DF9EE400475C12 /* WE_ReactNativeLogger.m */; };
+		55C2978B20DF9EE500475C12 /* WE_Logger.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C2978420DF9EE400475C12 /* WE_Logger.m */; };
+		55C2978C20DF9EE500475C12 /* LN_Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C2978520DF9EE400475C12 /* LN_Reachability.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -26,6 +30,14 @@
 		134814201AA4EA6300B7C361 /* libRNLaunchNavigator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNLaunchNavigator.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5544C0A520B8B06200C34D72 /* RNLaunchNavigator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RNLaunchNavigator.h; path = RNLaunchNavigator/RNLaunchNavigator.h; sourceTree = "<group>"; };
 		5544C0A620B8B06300C34D72 /* RNLaunchNavigator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RNLaunchNavigator.m; path = RNLaunchNavigator/RNLaunchNavigator.m; sourceTree = "<group>"; };
+		55C2977E20DF9EE400475C12 /* LN_Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LN_Reachability.h; path = RNLaunchNavigator/LN_Reachability.h; sourceTree = "<group>"; };
+		55C2977F20DF9EE400475C12 /* LN_LaunchNavigator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LN_LaunchNavigator.m; path = RNLaunchNavigator/LN_LaunchNavigator.m; sourceTree = "<group>"; };
+		55C2978020DF9EE400475C12 /* LN_LaunchNavigator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LN_LaunchNavigator.h; path = RNLaunchNavigator/LN_LaunchNavigator.h; sourceTree = "<group>"; };
+		55C2978220DF9EE400475C12 /* WE_ReactNativeLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WE_ReactNativeLogger.m; path = RNLaunchNavigator/WE_ReactNativeLogger.m; sourceTree = "<group>"; };
+		55C2978320DF9EE400475C12 /* WE_Logger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WE_Logger.h; path = RNLaunchNavigator/WE_Logger.h; sourceTree = "<group>"; };
+		55C2978420DF9EE400475C12 /* WE_Logger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WE_Logger.m; path = RNLaunchNavigator/WE_Logger.m; sourceTree = "<group>"; };
+		55C2978520DF9EE400475C12 /* LN_Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LN_Reachability.m; path = RNLaunchNavigator/LN_Reachability.m; sourceTree = "<group>"; };
+		55C2978720DF9EE500475C12 /* WE_ReactNativeLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WE_ReactNativeLogger.h; path = RNLaunchNavigator/WE_ReactNativeLogger.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,9 +62,17 @@
 		58B511D21A9E6C8500147676 = {
 			isa = PBXGroup;
 			children = (
+				55C2978020DF9EE400475C12 /* LN_LaunchNavigator.h */,
+				55C2977F20DF9EE400475C12 /* LN_LaunchNavigator.m */,
+				55C2977E20DF9EE400475C12 /* LN_Reachability.h */,
+				55C2978520DF9EE400475C12 /* LN_Reachability.m */,
+				134814211AA4EA7D00B7C361 /* Products */,
 				5544C0A520B8B06200C34D72 /* RNLaunchNavigator.h */,
 				5544C0A620B8B06300C34D72 /* RNLaunchNavigator.m */,
-				134814211AA4EA7D00B7C361 /* Products */,
+				55C2978320DF9EE400475C12 /* WE_Logger.h */,
+				55C2978420DF9EE400475C12 /* WE_Logger.m */,
+				55C2978720DF9EE500475C12 /* WE_ReactNativeLogger.h */,
+				55C2978220DF9EE400475C12 /* WE_ReactNativeLogger.m */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -115,7 +135,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55C2978B20DF9EE500475C12 /* WE_Logger.m in Sources */,
+				55C2978820DF9EE500475C12 /* LN_LaunchNavigator.m in Sources */,
 				5544C0A720B8B06300C34D72 /* RNLaunchNavigator.m in Sources */,
+				55C2978A20DF9EE500475C12 /* WE_ReactNativeLogger.m in Sources */,
+				55C2978C20DF9EE500475C12 /* LN_Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

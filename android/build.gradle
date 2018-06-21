@@ -7,6 +7,10 @@ def DEFAULT_OK_HTTP_VERSION                 = "3.10.0"
 android {
     compileSdkVersion project.hasProperty('compileSdkVersion') ? project.compileSdkVersion : DEFAULT_COMPILE_SDK_VERSION
     buildToolsVersion project.hasProperty('buildToolsVersion') ? project.buildToolsVersion : DEFAULT_BUILD_TOOLS_VERSION
+
+    defaultConfig {
+        minSdkVersion 4
+    }
 }
 
 dependencies {

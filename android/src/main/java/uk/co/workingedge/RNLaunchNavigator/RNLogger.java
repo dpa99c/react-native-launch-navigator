@@ -106,8 +106,9 @@ public class RNLogger implements ILogger {
     }
 
     private void logToReactConsole(String message, String logLevel){
-        if(enabled){
+        if(reactContext.hasActiveCatalystInstance() && enabled){
             WritableMap map = Arguments.createMap();
+            map.putString("logTag", logTag);
             map.putString("message", message);
             reactContext
               .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)

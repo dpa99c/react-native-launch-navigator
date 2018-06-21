@@ -1,5 +1,8 @@
 #import <React/RCTBridgeModule.h>
+#import <React/RCTEventEmitter.h>
+#import "LN_LaunchNavigator.h"
 
-@interface TestModule : NSObject <RCTBridgeModule>
+@interface RNLaunchNavigator : RCTEventEmitter <RCTBridgeModule>
+@property (nonatomic, retain) LN_LaunchNavigator* launchNavigator;
 
 @end

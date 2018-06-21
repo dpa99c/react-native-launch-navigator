@@ -1,12 +1,13 @@
 #import "WE_Logger.h"
-#import <Cordova/CDVCommandDelegate.h>
+#import <React/RCTEventEmitter.h>
 
-@interface WE_CordovaLogger : WE_Logger
+@interface WE_ReactNativeLogger : WE_Logger
 
-@property (nonatomic, weak) id <CDVCommandDelegate> commandDelegate;
+@property (nonatomic, weak) RCTEventEmitter <RCTBridgeModule>* eventEmitter;
 @property (nonatomic, retain) NSString* logTag;
 
--(id)initWithDelegate:(id <CDVCommandDelegate>)commandDelegate logTag:(NSString*)logTag;
+-(id)init:(RCTEventEmitter <RCTBridgeModule>*)eventEmitter logTag:(NSString*)logTag;
+-(NSArray*)getEventNames;
 -(void)error:(NSString*) msg;
 -(void)warn:(NSString*) msg;
 -(void)info:(NSString*) msg;
