@@ -231,11 +231,10 @@ Coordinates can be specified as a string or array
 
 ### List apps available on the current device
 
-    LaunchNavigator.getAvailableApps((apps) => {
-        for(let app in apps){
-            console.log(LaunchNavigator.getAppDisplayName(app) + (apps[app] ? " is" : " isn't") +" available");
-        }
-    });
+    let apps = LaunchNavigator.getAvailableApps();
+    for(let app in apps){
+        console.log(LaunchNavigator.getAppDisplayName(app) + (apps[app] ? " is" : " isn't") +" available");
+    }
 
 # Supported parameters
 
