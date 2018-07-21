@@ -14,11 +14,11 @@ Key features:
 
 
 <!-- Comment out until gifs are resized -->
-<!-- <p align="center">
-  <img src="http://i.imgur.com/LyrgJpP.gif" />
+ <p align="center">
+  <img width="300" src="http://i.imgur.com/QiUu2NQ.gif" />
   <span>&nbsp;</span>
-  <img src="http://i.imgur.com/G9xlcR7.gif" />
-</p> -->
+  <img width="300" src="http://i.imgur.com/Ox7taYH.gif" />
+</p>
 
 Launch Navigator functionality is also available as a [Cordova/Phonegap plugin](https://github.com/dpa99c/phonegap-launch-navigator).
 
