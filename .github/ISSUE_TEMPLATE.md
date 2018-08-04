@@ -38,6 +38,8 @@ Before opening an issue, please check a similar issue is not already open (or cl
 <!-- Please supply full details of your development environment including: -->
 - React Native version
 	- `react-native --version`
+- Other React Native modules/components/tools
+	- List `dependencies` and `devDependencies` from `package.json`
 - Dev machine OS and version, e.g.
     - OSX
         - `sw_vers`
