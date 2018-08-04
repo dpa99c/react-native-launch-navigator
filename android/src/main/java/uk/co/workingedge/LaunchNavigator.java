@@ -371,7 +371,7 @@ public class LaunchNavigator {
             }
             intent.setPackage(appName);
         }
-        context.startActivity(intent);
+        invokeIntent(intent);
         return null;
     }
 
@@ -428,7 +428,7 @@ public class LaunchNavigator {
 
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
             intent.setClassName(supportedAppPackages.get(GOOGLE_MAPS), "com.google.android.maps.MapsActivity");
-            context.startActivity(intent);
+            invokeIntent(intent);
             return null;
         }catch( JSONException e ) {
             String msg = e.getMessage();
@@ -514,7 +514,7 @@ public class LaunchNavigator {
             logger.debug(logMsg);
             logger.debug("URI: " + url);
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-            context.startActivity(intent);
+            invokeIntent(intent);
             return null;
         }catch( JSONException e ) {
             String msg = e.getMessage();
@@ -594,7 +594,7 @@ public class LaunchNavigator {
             logger.debug(logMsg);
             logger.debug("URI: " + url);
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-            context.startActivity(intent);
+            invokeIntent(intent);
             return null;
         }catch( JSONException e ) {
             String msg = e.getMessage();
@@ -639,7 +639,7 @@ public class LaunchNavigator {
             logger.debug(logMsg);
             logger.debug("URI: " + url);
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-            context.startActivity(intent);
+            invokeIntent(intent);
             return null;
         }catch( JSONException e ) {
             String msg = e.getMessage();
@@ -724,7 +724,7 @@ public class LaunchNavigator {
                 }
             }
             logger.debug(logMsg);
-            context.startActivity(intent);
+            invokeIntent(intent);
             return null;
         }catch( JSONException e ) {
             String msg = e.getMessage();
@@ -779,7 +779,7 @@ public class LaunchNavigator {
             logger.debug(logMsg);
             logger.debug("URI: " + url);
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-            context.startActivity(intent);
+            invokeIntent(intent);
             return null;
         }catch( JSONException e ) {
             String msg = e.getMessage();
@@ -862,7 +862,7 @@ public class LaunchNavigator {
             logger.debug(logMsg);
             logger.debug("URI: " + url);
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-            context.startActivity(intent);
+            invokeIntent(intent);
             return null;
         }catch( JSONException e ) {
             String msg = e.getMessage();
@@ -946,7 +946,7 @@ public class LaunchNavigator {
             logger.debug(logMsg);
             logger.debug("URI: " + url);
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-            context.startActivity(intent);
+            invokeIntent(intent);
             return null;
         }catch( JSONException e ) {
             String msg = e.getMessage();
@@ -1022,7 +1022,7 @@ public class LaunchNavigator {
             logger.debug(logMsg);
             logger.debug("URI: " + url);
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-            context.startActivity(intent);
+            invokeIntent(intent);
             return null;
         }catch( JSONException e ) {
             String msg = e.getMessage();
@@ -1108,7 +1108,7 @@ public class LaunchNavigator {
 
             logger.debug(logMsg);
 
-            context.startActivity(intent);
+            invokeIntent(intent);
             return null;
         }catch( JSONException e ) {
             String msg = e.getMessage();
@@ -1219,7 +1219,7 @@ public class LaunchNavigator {
             logger.debug(logMsg);
             logger.debug("URI: " + url);
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-            context.startActivity(intent);
+            invokeIntent(intent);
             return null;
         }catch( JSONException e ) {
             String msg = e.getMessage();
@@ -1314,7 +1314,7 @@ public class LaunchNavigator {
 
             Intent intent = new Intent();
             intent.setData(Uri.parse(url));
-            context.startActivity(intent);
+            invokeIntent(intent);
             return null;
         }catch( JSONException e ) {
             String msg = e.getMessage();
@@ -1435,7 +1435,7 @@ public class LaunchNavigator {
 
             Intent intent = new Intent();
             intent.setData(Uri.parse(url));
-            context.startActivity(intent);
+            invokeIntent(intent);
             return null;
         }catch( JSONException e ) {
             String msg = e.getMessage();
@@ -1543,7 +1543,7 @@ public class LaunchNavigator {
 
             Intent intent = new Intent();
             intent.setData(Uri.parse(url));
-            context.startActivity(intent);
+            invokeIntent(intent);
             return null;
         }catch( JSONException e ) {
             String msg = e.getMessage();
@@ -1557,6 +1557,10 @@ public class LaunchNavigator {
     /*
      * Utilities
      */
+    private void invokeIntent(Intent intent){
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        context.startActivity(intent);
+    }
 
     private String parseExtrasToUrl(JSONObject params) throws JSONException{
         String extras = null;
