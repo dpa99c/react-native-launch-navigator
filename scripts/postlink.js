@@ -1,12 +1,12 @@
 #!/usr/bin/env node
-const helpers = require('./link_helpers');
 const logger = require('./logger');
 logger.setLogTag("react-native-launch-navigator[postlink]");
+const ios_helpers = require('./ios.link_helpers');
 
 logger.debug("running");
-const packageJson = helpers.readModuleJson('package.json');
+const packageJson = ios_helpers.readModuleJson('package.json');
 const sourceQuerySchemes = packageJson.rnpm.iosQuerySchemes;
-const currentQuerySchemes = helpers.plist.LSApplicationQueriesSchemes || [];
+const currentQuerySchemes = ios_helpers.plist.LSApplicationQueriesSchemes || [];
 let targetQuerySchemes = [];
 
 for(let scheme of sourceQuerySchemes){
@@ -21,13 +21,13 @@ if(targetQuerySchemes.length === 0){
 }
 
 // Add to plist
-if(!helpers.plist.LSApplicationQueriesSchemes) helpers.plist.LSApplicationQueriesSchemes = [];
+if(!ios_helpers.plist.LSApplicationQueriesSchemes) ios_helpers.plist.LSApplicationQueriesSchemes = [];
 for(let scheme of targetQuerySchemes){
-    helpers.plist.LSApplicationQueriesSchemes.push(scheme);
+    ios_helpers.plist.LSApplicationQueriesSchemes.push(scheme);
 }
-helpers.writePlist(helpers.plist);
+ios_helpers.writePlist(ios_helpers.plist);
 
 // Record added schemes in temp file
 const tempFileContents = {schemes: targetQuerySchemes};
-helpers.writeModuleJson(helpers.tempFileName, tempFileContents);
+ios_helpers.writeModuleJson(ios_helpers.tempFileName, tempFileContents);
 logger.log("Added target queryschemes to project plist");

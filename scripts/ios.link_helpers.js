@@ -15,28 +15,34 @@ const plistParser = require('fast-plist');
 const plistWriter = require('plist');
 
 const logger = require('./logger');
-logger.setLogTag("react-native-launch-navigator[link_helpers]");
+logger.setLogTag("react-native-launch-navigator[ios_link_helpers]");
 
 /*********************
  * Private properties
  *********************/
-var helpers = {};
+let helpers = {};
 
-const projectDirectory = process.cwd();
+const MODULE_CLASS_NAME = "RNLaunchNavigator";
+const scriptsDirectory = path.join(__dirname);
+const moduleDirectory = path.join(scriptsDirectory, '..');
+const modulesDirectory = path.join(moduleDirectory, '..');
+const projectDirectory = path.join(modulesDirectory, '..');
 const sourceDirectory = path.join(projectDirectory, 'ios');
 const xcodeProjectDirectory = findProject(sourceDirectory);
-const moduleDirectory = path.resolve(__dirname, '..');
 
-logger.debug("projectDirectory="+projectDirectory);
-logger.debug("sourceDirectory="+sourceDirectory);
-logger.debug("xcodeProjectDirectory="+xcodeProjectDirectory);
-logger.debug("moduleDirectory="+moduleDirectory);
+
+logger.debug("scriptsDirectory=" + scriptsDirectory);
+logger.debug("moduleDirectory=" + moduleDirectory);
+logger.debug("modulesDirectory=" + modulesDirectory);
+logger.debug("projectDirectory=" + projectDirectory);
+logger.debug("sourceDirectory=" + sourceDirectory);
+logger.debug("xcodeProjectDirectory=" + xcodeProjectDirectory);
+
 
 const projectConfig = {
     sourceDir: sourceDirectory,
     pbxprojPath: path.join(
-        projectDirectory,
-        'ios',
+        sourceDirectory,
         xcodeProjectDirectory,
         'project.pbxproj'
     )
@@ -121,7 +127,7 @@ function findProject(folder) {
         .filter(project => {
             return path.dirname(project).match(IOS_BASE_PATTERN);
         })
-        .sort((projectA, projectB) =>  {
+        .sort((projectA, projectB) => {
             return path.dirname(projectA).match(IOS_BASE_PATTERN) ? -1 : 1;
         });
 
@@ -133,30 +139,38 @@ function findProject(folder) {
 }
 
 function getModuleFilePath(filename) {
-    return path.join(moduleDirectory, './'+filename);
+    return path.join(moduleDirectory, './' + filename);
 }
 
 /*********************
  * Public functions
  *********************/
-helpers.writePlist = function(plist) {
+helpers.writePlist = function (plist) {
     writePlist(projectConfig.sourceDir, project, plist);
 };
 
-helpers.readModuleJson = function(filename){
+helpers.readModuleJson = function (filename) {
     return JSON.parse(fs.readFileSync(getModuleFilePath(filename), 'utf-8'));
 };
 
-helpers.writeModuleJson = function(filename, contents) {
+helpers.writeModuleJson = function (filename, contents) {
     fs.writeFileSync(getModuleFilePath(filename), JSON.stringify(contents));
 };
 
-helpers.moduleJsonExists = function(filename) {
+helpers.moduleJsonExists = function (filename) {
     return fs.existsSync(getModuleFilePath(filename));
 };
 
-helpers.removeModuleJson = function(filename) {
+helpers.removeModuleJson = function (filename) {
     fs.unlinkSync(getModuleFilePath(filename));
 };
+
+helpers.isLinked = function () {
+    let pbxproj = fs.readFileSync(projectConfig.pbxprojPath, 'utf-8');
+    let isLinked = !!pbxproj.match(MODULE_CLASS_NAME+'.xcodeproj');
+    logger.debug("is already linked: " + isLinked);
+    return isLinked;
+};
+
 
 module.exports = helpers;
