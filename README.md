@@ -424,26 +424,50 @@ Either:
 #### Returns
 - {Promise}
     - resolved when the navigation app is successfully launched.
-    - rejected if an error is encountered while launching the app. Will be passed a single string argument containing the error message.
+    - rejected if an error is occurred. Rejected with args:
+        - {string} - error message
 
 ### isAppAvailable()
 Determines if the given app is installed and available on the current device.
 
-    let available = LaunchNavigator.isAppAvailable(appName, success, error);
+    let app = LaunchNavigator.APP.WAZE;
+    LaunchNavigator.isAppAvailable(app)
+        .then((isAvailable) => {
+            console.log(LaunchNavigator.getAppDisplayName(app)+" is available: "+isAvailable);
+        })
+        .catch((error) => {
+            console.error(error);
+        });
 
 #### Parameters
 - {string} appName - name of the app to check availability for. Define as a constant using `LaunchNavigator.APP`.
 
 #### Returns
-- {boolean} - indicates the availability of the specified app.
+- {Promise}
+    - resolved with:
+        - {boolean} - indicates the availability of the specified app.
+    - rejected if an error is occurred. Rejected with args:
+        - {string} - error message
 
 ### getAvailableApps()
 Returns a list indicating which apps are installed and available on the current device for the current platform.
 
-    let availableApps = LaunchNavigator.getAvailableApps();
+    LaunchNavigator.getAvailableApps()
+        .then((apps) => {
+            for(let app in apps){
+                console.log(LaunchNavigator.getAppDisplayName(app)+" is "+(apps[app] ? "available" : "unavailable"));
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+        });
 
 #### Returns
-- {object} - a key/value object where the key is the app name as a constant in `LaunchNavigator.APP` and the value is a boolean indicating whether the app is available.
+- {Promise}
+    - resolved with:
+        - {object} - a key/value object where the key is the app name as a constant in `LaunchNavigator.APP` and the value is a boolean indicating whether the app is available.
+    - rejected if an error is occurred. Rejected with args:
+        - {string} - error message
 
 ### getAppDisplayName()
 Returns the display name of the specified app.
