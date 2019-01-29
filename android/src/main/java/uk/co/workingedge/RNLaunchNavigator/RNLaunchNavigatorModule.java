@@ -57,6 +57,11 @@ public class RNLaunchNavigatorModule extends ReactContextBaseJavaModule {
      * Module API methods
      *********************/
     @ReactMethod
+    public void setGoogleApiKey(final String googleApiKey){
+        this.launchNavigator.setGoogleApiKey(googleApiKey);
+    }
+
+    @ReactMethod
     public void enableDebug(final Boolean enabled){
         this.logger.setEnabled(enabled);
         this.launchNavigator.getLogger().setEnabled(enabled);

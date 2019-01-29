@@ -70,9 +70,12 @@ To help ensure this module is kept updated, new features are added and bugfixes 
     - [supportsStartName()](#supportsstartname)
     - [supportsLaunchMode()](#supportslaunchmode)
     - [enableDebug()](#enabledebug)
+    - [setGoogleApiKey()](#setgoogleapikey)
 - [Example project](#example-project)
 - [Platform-specifics](#platform-specifics)
   - [Android](#android)
+    - [Google API key for Android](#google-api-key-for-android)
+    - [`geo:` URI scheme](#geo-uri-scheme)
     - [Google Maps launch modes](#google-maps-launch-modes)
   - [iOS](#ios)
     - ["Removing" Apple Maps](#removing-apple-maps)
@@ -172,6 +175,10 @@ Import the module into your app:
     import LaunchNavigator from 'react-native-launch-navigator';
 
 ## Simple usage
+
+On Android, don't forget to set your [Google API key](#google-api-key-for-android):
+
+    if(Platform.OS === "android") LaunchNavigator.setGoogleApiKey("your_api_key");
 
 ### Navigate to a destination address from current location.
 
@@ -582,6 +589,18 @@ Enables debug log output from the module to the JS and native consoles. By defau
 #### Parameters
 - {boolean} enabled - Whether to enable debug.
 
+### setGoogleApiKey()
+Enables specification of the Google API key to use for accessing Google's Geocoding API.
+If you fail to set this on Android before attempting to use this module to launch a navigation app which requires a lat/lon coordinates as input, the module will raise an error if the input location is an address because it requires geocoding to a lat/lon coordinate.
+See [Google API key for Android](#google-api-key-for-android) for more information.
+
+Android only. Calling on iOS will have no effect.
+
+    LaunchNavigator.setGoogleApiKey("your_api_key");
+
+#### Parameters
+- {boolean} enabled - Whether to enable debug.
+
 # Example project
 
 The example project can be used to build and run a React Native app for Android & iOS:
@@ -594,6 +613,12 @@ It demonstrates how this module can be used and validates its functionality.
 
 ## Android
 
+### Google API key for Android
+- On Android, this module uses [Google's Geocoding API](https://developers.google.com/maps/documentation/geocoding/intro) to geocode input addresses to lat/lon coordinates in order to support navigation apps which only allow input locations to be specified as lat/lon coordinates.
+- Google now requires that an API key be specified in order to use the Geocoding API, so you'll need to obtain an API key and specify it via [`setGoogleApiKey()`](#setgoogleapikey).
+- For more information on how to obtain an API key, see the [Google documentation](https://developers.google.com/maps/documentation/geocoding/get-api-key).
+
+### `geo:` URI scheme
 - Running on Android, in addition to discovering which explicitly supported apps are installed, the module will also detect which installed apps support using the `geo:` URI scheme for use in navigation.
 These are returned in the list of available apps.
 

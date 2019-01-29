@@ -257,6 +257,12 @@ ln.supportsStartName = function() {
     ln._supportsStartName.apply(this, arguments);
 };
 
+/**
+ * Sets the Google API key to use for the Google Geocoder API on Android.
+ * @param {string} googleApiKey - the API key to use for the Geocoder API on Android.
+ */
+ln.setGoogleApiKey = RNLaunchNavigator.setGoogleApiKey;
+
 /************
  * Bootstrap
  ************/

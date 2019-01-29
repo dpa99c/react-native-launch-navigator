@@ -1,6 +1,6 @@
 {
   "name": "react-native-launch-navigator",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A React Native module for launching today's most popular navigation/ride apps to navigate to a destination.",
   "main": "index.js",
   "types": "./index.d.ts",

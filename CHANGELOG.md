@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 1.0.3
+Enable specification of Google API key for geocoding on Android. See [dpa99c/phonegap-launch-navigator#211](https://github.com/dpa99c/phonegap-launch-navigator/issues/211).
+
 ## 1.0.2
 Fix auto-linking scripts to prevent multiple linking/unlinking attempts. Resolves [#2](https://github.com/dpa99c/react-native-launch-navigator/issues/2).
 

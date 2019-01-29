@@ -31,6 +31,11 @@ let Logger = new RNLogger(RNLaunchNavigator);
 /******************
  * Public API
  ******************/
+
+/**
+ * Sets debug mode status in the native launch navigator module
+ * @param {boolean} enabled - if true, debug mode is enabled; if false, debug mode is disabled.
+ */
 ln.enableDebug = RNLaunchNavigator.enableDebug;
 
 /**

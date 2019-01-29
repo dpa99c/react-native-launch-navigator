@@ -52,6 +52,10 @@ RCT_EXPORT_MODULE(RNLaunchNavigator)
 /**********************************/
 #pragma mark - module API functions
 /**********************************/
+RCT_EXPORT_METHOD(setGoogleApiKey:(NSString*)googleApiKey){
+  [logger info:@"setGoogleApiKey not implemented/required on iOS"];
+}
+
 RCT_EXPORT_METHOD(enableDebug:(BOOL)enabled){
   [self _setLoggerEnabled:enabled];
 }
