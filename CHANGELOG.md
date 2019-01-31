@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 1.0.4
+Fix check for empty extras parameter on iOS. See [dpa99c/phonegap-launch-navigator#212](https://github.com/dpa99c/phonegap-launch-navigator/issues/212).
+
 ## 1.0.3
 Enable specification of Google API key for geocoding on Android. See [dpa99c/phonegap-launch-navigator#211](https://github.com/dpa99c/phonegap-launch-navigator/issues/211).
 
