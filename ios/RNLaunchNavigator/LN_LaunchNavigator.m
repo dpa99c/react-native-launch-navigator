@@ -331,8 +331,9 @@ static NSDictionary* extras;
         }
     }
     
+    BOOL success;
     if([navigateParams[@"startType"] isEqual: LNLocTypeNone]){
-        [MKMapItem openMapsWithItems:@[dest_mapItem] launchOptions:launchOptions];
+        success = [MKMapItem openMapsWithItems:@[dest_mapItem] launchOptions:launchOptions];
     }else{
         if([self isNull:startAddress]){
             start_mapItem = [[MKMapItem alloc] initWithPlacemark:[[MKPlacemark alloc] initWithCoordinate:startCoord addressDictionary:nil]];
@@ -340,7 +341,12 @@ static NSDictionary* extras;
                 [start_mapItem setName:startName];
             }
         }
-        [MKMapItem openMapsWithItems:@[start_mapItem, dest_mapItem] launchOptions:launchOptions];
+        success = [MKMapItem openMapsWithItems:@[start_mapItem, dest_mapItem] launchOptions:launchOptions];
+    }
+    if(success){
+      self.navigateSuccess();
+    }else{
+      self.navigateFail([NSString stringWithFormat:@"Failed to open MapKit"]);
     }
 }
 
