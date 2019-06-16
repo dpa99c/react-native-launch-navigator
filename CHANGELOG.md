@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## 1.0.5
+- Pass `navigate=yes` to Waze on Android if input type is an address. See https://github.com/dpa99c/phonegap-launch-navigator/issues/213.
+- Fix checks for empty strings/objects on iOS.
+- iOS fix: Make LNEmptyCoord static to scope it to the class.
+- Merge [PR#10](https://github.com/dpa99c/react-native-launch-navigator/issues/10): Fixed `LaunchNavigator.navigate` never resolving the returned promise when AppleMaps/MapKit is used on iOS
+
 ## 1.0.4
 Fix check for empty extras parameter on iOS. See [dpa99c/phonegap-launch-navigator#212](https://github.com/dpa99c/phonegap-launch-navigator/issues/212).
 
