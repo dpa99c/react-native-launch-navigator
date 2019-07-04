@@ -59,7 +59,7 @@ export interface LaunchNavigatorOptions {
     enableGeocoding?: boolean;
 }
 
-export interface LaunchNavigator {
+interface ILaunchNavigator {
 
     /**
      * Supported platforms
@@ -216,3 +216,5 @@ export interface LaunchNavigator {
         enabled: boolean
     ) => void;
 }
+
+export const LaunchNavigator: ILaunchNavigator;
