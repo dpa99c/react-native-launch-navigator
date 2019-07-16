@@ -212,17 +212,20 @@ Coordinates can be specified as a string or array
 
     let app = null;
 
-    if(LaunchNavigator.isAppAvailable(LaunchNavigator.APP.WAZE)){
-        app = LaunchNavigator.APP.WAZE;
-    }else{
-        console.warn("Waze not available - falling back to default navigation app");
-    }
-
-    LaunchNavigator.navigate("London, UK", {
-        app: app
+    LaunchNavigator.isAppAvailable(LaunchNavigator.APP.WAZE).then((isWazeAvailable) => {
+        if(isWazeAvailable){
+            app = LaunchNavigator.APP.WAZE;
+        }else{
+            console.warn("Waze not available - falling back to default navigation app");
+        }
+    
+        LaunchNavigator.navigate("London, UK", {
+            app: app
+        });
+            .then(() => console.log("Launched navigator"))
+            .catch((err) => console.error("Error launching navigator: "+err));
     });
-        .then(() => console.log("Launched navigator"))
-        .catch((err) => console.error("Error launching navigator: "+err));
+    
 
 ### List all of the apps supported by the current platform
 
