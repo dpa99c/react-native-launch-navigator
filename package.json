@@ -22,7 +22,7 @@
     "launch"
   ],
   "peerDependencies": {
-    "react-native": ">=0.36.0"
+    "react-native": ">=0.60.0"
   },
   "dependencies": {
     "fast-plist": "^0.1.2",
@@ -30,33 +30,25 @@
     "xcode": "^0.9.1"
   },
   "scripts": {
-    "postinstall": "node scripts/postinstall.js",
-    "preuninstall": "node scripts/preuninstall.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "node scripts/postinstall.js"
   },
-  "rnpm": {
-    "commands": {
-      "postlink": "node node_modules/react-native-launch-navigator/scripts/postlink.js",
-      "postunlink": "node node_modules/react-native-launch-navigator/scripts/postunlink.js"
-    },
-    "iosQuerySchemes": [
-      "citymapper",
-      "comgooglemaps",
-      "navigon",
-      "transit",
-      "waze",
-      "yandexnavi",
-      "uber",
-      "tomtomhome",
-      "com.sygic.aura",
-      "here-route",
-      "moovit",
-      "lyft",
-      "mapsme",
-      "cabify",
-      "baidumap",
-      "taxis99",
-      "iosamap"
-    ]
-  }
+  "iosQuerySchemes": [
+    "citymapper",
+    "comgooglemaps",
+    "navigon",
+    "transit",
+    "waze",
+    "yandexnavi",
+    "uber",
+    "tomtomhome",
+    "com.sygic.aura",
+    "here-route",
+    "moovit",
+    "lyft",
+    "mapsme",
+    "cabify",
+    "baidumap",
+    "taxis99",
+    "iosamap"
+  ]
 }

@@ -20,7 +20,6 @@ const moduleDirectory = path.join(scriptsDirectory, '..');
 const modulesDirectory = path.join(moduleDirectory, '..');
 const projectDirectory = path.join(modulesDirectory, '..');
 const sourceDirectory = path.join(projectDirectory, 'android');
-const gradleSettingsFilepath = path.join(sourceDirectory, 'settings.gradle');
 
 logger.debug("scriptsDirectory=" + scriptsDirectory);
 logger.debug("moduleDirectory=" + moduleDirectory);
@@ -41,12 +40,6 @@ logger.debug("sourceDirectory="+sourceDirectory);
 /*********************
  * Public functions
  *********************/
-helpers.isLinked = function(){
-    let gradleSettings = fs.readFileSync(gradleSettingsFilepath, 'utf-8');
-    let isLinked = !!gradleSettings.match(MODULE_NAME);
-    logger.debug("is already linked: "+isLinked);
-    return isLinked;
-};
 
 
 module.exports = helpers;

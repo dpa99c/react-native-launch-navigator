@@ -4,6 +4,7 @@
 
 const path = require('path');
 const fs = require('fs');
+const exec = require('child_process').execSync;
 const glob = require('glob');
 const xcode = require('xcode');
 
@@ -165,11 +166,15 @@ helpers.removeModuleJson = function (filename) {
     fs.unlinkSync(getModuleFilePath(filename));
 };
 
-helpers.isLinked = function () {
-    let pbxproj = fs.readFileSync(projectConfig.pbxprojPath, 'utf-8');
-    let isLinked = !!pbxproj.match(MODULE_CLASS_NAME+'.xcodeproj');
-    logger.debug("is already linked: " + isLinked);
-    return isLinked;
+helpers.podInstall = function() {
+    try{
+        exec('pod install', {
+            cwd: path.join(projectDirectory, 'ios'),
+            stdio: 'inherit'
+        });
+    }catch(e){
+        //swallow the exception
+    }
 };
 
 

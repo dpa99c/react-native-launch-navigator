@@ -5,7 +5,7 @@ const ios_helpers = require('./ios.link_helpers');
 
 logger.debug("running");
 const packageJson = ios_helpers.readModuleJson('package.json');
-const sourceQuerySchemes = packageJson.rnpm.iosQuerySchemes;
+const sourceQuerySchemes = packageJson.iosQuerySchemes;
 const currentQuerySchemes = ios_helpers.plist.LSApplicationQueriesSchemes || [];
 let targetQuerySchemes = [];
 
