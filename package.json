@@ -22,7 +22,7 @@
     "launch"
   ],
   "peerDependencies": {
-    "react-native": ">=0.36.0"
+    "react-native": ">=0.60.0"
   },
   "dependencies": {
     "fast-plist": "^0.1.2",
