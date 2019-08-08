@@ -1,6 +1,6 @@
 {
   "name": "react-native-launch-navigator",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "A React Native module for launching today's most popular navigation/ride apps to navigate to a destination.",
   "main": "index.js",
   "types": "./index.d.ts",
@@ -30,33 +30,25 @@
     "xcode": "^0.9.1"
   },
   "scripts": {
-    "postinstall": "node scripts/postinstall.js",
-    "preuninstall": "node scripts/preuninstall.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "postinstall": "node scripts/postinstall.js"
   },
-  "rnpm": {
-    "commands": {
-      "postlink": "node node_modules/react-native-launch-navigator/scripts/postlink.js",
-      "postunlink": "node node_modules/react-native-launch-navigator/scripts/postunlink.js"
-    },
-    "iosQuerySchemes": [
-      "citymapper",
-      "comgooglemaps",
-      "navigon",
-      "transit",
-      "waze",
-      "yandexnavi",
-      "uber",
-      "tomtomhome",
-      "com.sygic.aura",
-      "here-route",
-      "moovit",
-      "lyft",
-      "mapsme",
-      "cabify",
-      "baidumap",
-      "taxis99",
-      "iosamap"
-    ]
-  }
+  "iosQuerySchemes": [
+    "citymapper",
+    "comgooglemaps",
+    "navigon",
+    "transit",
+    "waze",
+    "yandexnavi",
+    "uber",
+    "tomtomhome",
+    "com.sygic.aura",
+    "here-route",
+    "moovit",
+    "lyft",
+    "mapsme",
+    "cabify",
+    "baidumap",
+    "taxis99",
+    "iosamap"
+  ]
 }

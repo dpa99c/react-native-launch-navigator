@@ -165,8 +165,7 @@ I don't have time to research launch mechanisms for every suggested app, so I wi
 
     npm install --save react-native-launch-navigator
 
-Module linking is fully automatic: the module will link/unlink itself on module install/uninstall via hook scripts.
-It will also add/remove the custom URL schemes for supported navigation apps to the iOS app plist file.
+The module will add/remove the custom URL schemes for supported navigation apps to the iOS app plist file upon linking/unlinking.
 
 # Usage
 

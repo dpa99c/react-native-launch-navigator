@@ -1,4 +1,7 @@
 # CHANGELOG
+## 1.0.6
+- Support for React Native 0.60.x
+    - Fixes [#15](https://github.com/dpa99c/react-native-launch-navigator/issues/15) and [#16](https://github.com/dpa99c/react-native-launch-navigator/issues/16).
 
 ## 1.0.5
 - Pass `navigate=yes` to Waze on Android if input type is an address. See https://github.com/dpa99c/phonegap-launch-navigator/issues/213.
