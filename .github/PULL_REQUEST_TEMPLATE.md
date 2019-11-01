@@ -26,12 +26,12 @@ For bug fixes / features, please check if your PR fulfills the following require
 - [ ] Yes
 - [ ] No
 
-<!-- If this PR contains a breaking change, please describe the impact and migration path for existing module versions. -->
+<!-- If this PR contains a breaking change, please describe the impact and migration path for existing plugin versions. -->
 
 ## What testing has been done on the changes in the PR?
-<!-- e.g. if an example project exists for this module, has it been updated to test the new functionality? -->
+<!-- e.g. if an example project exists for this plugin, has it been updated to test the new functionality? -->
 
 ## What testing has been done on existing functionality?
-<!-- e.g. if an example project exists for this module, has been it been tested to ensure no regression bugs have been introduced? -->
+<!-- e.g. if an example project exists for this plugin, has been it been tested to ensure no regression bugs have been introduced? -->
 
 ## Other information
