@@ -17,6 +17,6 @@ android {
 dependencies {
     def okHttpVersion = project.hasProperty('okHttpVersion') ? project.okHttpVersion : DEFAULT_OK_HTTP_VERSION
     
-    compile 'com.facebook.react:react-native:+'
-    compile "com.squareup.okhttp3:okhttp:$okHttpVersion"
+    implementation 'com.facebook.react:react-native:+'
+    implementation "com.squareup.okhttp3:okhttp:$okHttpVersion"
 }
