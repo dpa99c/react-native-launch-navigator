@@ -83,6 +83,7 @@ public class RNLaunchNavigatorModule extends ReactContextBaseJavaModule {
     public void getAvailableApps(Promise promise){
         try{
             logger.debug("getAvailableApps");
+            launchNavigator.discoverAvailableApps();
             JSONObject oApps = launchNavigator.getAvailableApps();
             ReadableMap mApps = RNUtils.convertJsonToMap(oApps);
             promise.resolve(mApps);
@@ -112,7 +113,7 @@ public class RNLaunchNavigatorModule extends ReactContextBaseJavaModule {
             }else{
                 promise.reject(ERROR_CODE_ERROR, error);
             }
-        }catch (Exception e){
+        } catch (Exception e){
             handleExceptionWithPromise(promise, e);
         }
     }
