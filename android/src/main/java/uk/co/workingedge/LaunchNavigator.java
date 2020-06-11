@@ -295,7 +295,7 @@ public class LaunchNavigator {
         discoverAvailableApps();
     }
 
-    private void discoverAvailableApps(){
+    public void discoverAvailableApps(){
 
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(GEO_URI));
         List<ResolveInfo> resolveInfoList = packageManager.queryIntentActivities(intent, 0);
