@@ -39,6 +39,7 @@ To help ensure this module is kept updated, new features are added and bugfixes 
 - [Supported navigation apps](#supported-navigation-apps)
   - [Adding support for more apps](#adding-support-for-more-apps)
 - [Installation](#installation)
+  - [Add iOS URL schemes](#add-ios-url-schemes)
 - [Usage](#usage)
   - [Simple usage](#simple-usage)
     - [Navigate to a destination address from current location.](#navigate-to-a-destination-address-from-current-location)
@@ -59,18 +60,41 @@ To help ensure this module is kept updated, new features are added and bugfixes 
     - [LAUNCH_MODE](#launch_mode)
   - [API methods](#api-methods)
     - [navigate()](#navigate)
+      - [Parameters](#parameters)
+      - [Returns](#returns)
     - [isAppAvailable()](#isappavailable)
+      - [Parameters](#parameters-1)
+      - [Returns](#returns-1)
     - [getAvailableApps()](#getavailableapps)
+      - [Returns](#returns-2)
     - [getAppDisplayName()](#getappdisplayname)
+      - [Parameters](#parameters-2)
+      - [Returns](#returns-3)
     - [getAppsForPlatform()](#getappsforplatform)
+      - [Parameters](#parameters-3)
+      - [Returns](#returns-4)
     - [supportsTransportMode()](#supportstransportmode)
+      - [Parameters](#parameters-4)
+      - [Returns](#returns-5)
     - [getTransportModes()](#gettransportmodes)
+      - [Parameters](#parameters-5)
+      - [Returns](#returns-6)
     - [supportsDestName()](#supportsdestname)
+      - [Parameters](#parameters-6)
+      - [Returns](#returns-7)
     - [supportsStart()](#supportsstart)
+      - [Parameters](#parameters-7)
+      - [Returns](#returns-8)
     - [supportsStartName()](#supportsstartname)
+      - [Parameters](#parameters-8)
+      - [Returns](#returns-9)
     - [supportsLaunchMode()](#supportslaunchmode)
+      - [Parameters](#parameters-9)
+      - [Returns](#returns-10)
     - [enableDebug()](#enabledebug)
+      - [Parameters](#parameters-10)
     - [setGoogleApiKey()](#setgoogleapikey)
+      - [Parameters](#parameters-11)
 - [Example project](#example-project)
 - [Platform-specifics](#platform-specifics)
   - [Android](#android)
@@ -80,6 +104,8 @@ To help ensure this module is kept updated, new features are added and bugfixes 
   - [iOS](#ios)
     - ["Removing" Apple Maps](#removing-apple-maps)
     - [Apple Maps launch modes](#apple-maps-launch-modes)
+      - [URI scheme launch method](#uri-scheme-launch-method)
+      - [MapKit class launch method](#mapkit-class-launch-method)
 - [App-specifics](#app-specifics)
   - [Lyft](#lyft)
   - [99 Taxi](#99-taxi)
@@ -164,8 +190,38 @@ I don't have time to research launch mechanisms for every suggested app, so I wi
 # Installation
 
     npm install --save react-native-launch-navigator
+    
+For iOS only:
 
-The module will add/remove the custom URL schemes for supported navigation apps to the iOS app plist file upon linking/unlinking.
+    cd ios && pod install    
+
+## Add iOS URL schemes
+On iOS, for each installed navigation app you want your app to be able to launch, you must manually whitelist its custom URL scheme in your app's `Info.plist`.
+Note: this is required since React Native v0.60 added autolinking and removed support for postlink hook scripts which made it possible to automate this step. 
+
+Add the URL schemes for the navigation apps you want to support to the `LSApplicationQueriesSchemes` key in your `Info.plist`:
+
+| App | Scheme |
+|---|---|
+| City Mapper | `citymapper` |
+| Google Maps | `comgooglemaps` |
+| Garmin Navigon | `navigon` |
+| Transit App | `transit` |
+| Waze | `waze` |
+| Yandex Navigator | `yandexnavi` |
+| Uber | `uber` |
+| Tomtom | `tomtomhome` |
+| Sygic | `com.sygic.aura` |
+| HERE Maps | `here-route` |
+| Moovit | `moovit` |
+| Lyft | `lyft` |
+| MAPS.ME | `mapsme` |
+| Cabify | `cabify` |
+| Baidu Maps | `baidumap` |
+| 99 Taxi | `taxis99` |
+| Gadode | `iosamap` |
+
+The full list of URL schemes above can be found in the [example project's `Info.plist`](https://github.com/dpa99c/react-native-launch-navigator-example/blob/master/ios/RNLNExample/Info.plist#L78).
 
 # Usage
 

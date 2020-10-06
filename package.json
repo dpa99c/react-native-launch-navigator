@@ -23,32 +23,5 @@
   ],
   "peerDependencies": {
     "react-native": ">=0.60.0"
-  },
-  "dependencies": {
-    "fast-plist": "^0.1.2",
-    "plist": "^2.0.1",
-    "xcode": "^0.9.1"
-  },
-  "scripts": {
-    "postinstall": "node scripts/postinstall.js"
-  },
-  "iosQuerySchemes": [
-    "citymapper",
-    "comgooglemaps",
-    "navigon",
-    "transit",
-    "waze",
-    "yandexnavi",
-    "uber",
-    "tomtomhome",
-    "com.sygic.aura",
-    "here-route",
-    "moovit",
-    "lyft",
-    "mapsme",
-    "cabify",
-    "baidumap",
-    "taxis99",
-    "iosamap"
-  ]
+  }
 }
