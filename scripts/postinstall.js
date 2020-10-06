@@ -1,7 +1,10 @@
 #!/usr/bin/env node
+const logger = require('./logger');
+logger.setLogTag("react-native-launch-navigator[postinstall]");
+
+const helpers = require('./helpers');
+if(!helpers.isOSX() || !helpers.hasiOSProject()) return logger.debug("Aborting as iOS env not detected");
 
 const ios_helpers = require('./ios.link_helpers');
-
-// Install Pods
-console.log("react-native-launch-navigator: pod install");
 ios_helpers.podInstall();
+

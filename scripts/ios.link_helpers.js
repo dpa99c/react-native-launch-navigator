@@ -16,35 +16,24 @@ const plistParser = require('fast-plist');
 const plistWriter = require('plist');
 
 const logger = require('./logger');
+const helpers = require('./helpers');
 logger.setLogTag("react-native-launch-navigator[ios_link_helpers]");
 
 /*********************
  * Private properties
  *********************/
-let helpers = {};
+let iosHelpers = {};
 
 const MODULE_CLASS_NAME = "RNLaunchNavigator";
-const scriptsDirectory = path.join(__dirname);
-const moduleDirectory = path.join(scriptsDirectory, '..');
-const modulesDirectory = path.join(moduleDirectory, '..');
-const projectDirectory = path.join(modulesDirectory, '..');
-const sourceDirectory = path.join(projectDirectory, 'ios');
-const xcodeProjectDirectory = findProject(sourceDirectory);
-
-
-logger.debug("scriptsDirectory=" + scriptsDirectory);
-logger.debug("moduleDirectory=" + moduleDirectory);
-logger.debug("modulesDirectory=" + modulesDirectory);
-logger.debug("projectDirectory=" + projectDirectory);
-logger.debug("sourceDirectory=" + sourceDirectory);
-logger.debug("xcodeProjectDirectory=" + xcodeProjectDirectory);
+const xcodeproject = findProject(helpers.directory.iosProject);
+logger.debug("xcodeproject=" + xcodeproject);
 
 
 const projectConfig = {
-    sourceDir: sourceDirectory,
+    sourceDir: helpers.directory.iosProject,
     pbxprojPath: path.join(
-        sourceDirectory,
-        xcodeProjectDirectory,
+        helpers.directory.iosProject,
+        xcodeproject,
         'project.pbxproj'
     )
 };
@@ -55,8 +44,8 @@ const project = xcode.project(projectConfig.pbxprojPath).parseSync();
 /*********************
  * Public properties
  *********************/
-helpers.plist = readPlist(projectConfig.sourceDir, project);
-helpers.tempFileName = "injectedQuerySchemes.json.tmp";
+iosHelpers.plist = readPlist(projectConfig.sourceDir, project);
+iosHelpers.tempFileName = "injectedQuerySchemes.json.tmp";
 
 /*********************
  * Private functions
@@ -140,36 +129,37 @@ function findProject(folder) {
 }
 
 function getModuleFilePath(filename) {
-    return path.join(moduleDirectory, './' + filename);
+    return path.join(helpers.directory.module, './' + filename);
 }
 
 /*********************
  * Public functions
  *********************/
-helpers.writePlist = function (plist) {
-    writePlist(projectConfig.sourceDir, project, plist);
+iosHelpers.writePlist = function (plist) {
+    writePlist(projectConfig.sourceDir, helpers.directory.project, plist);
 };
 
-helpers.readModuleJson = function (filename) {
+iosHelpers.readModuleJson = function (filename) {
     return JSON.parse(fs.readFileSync(getModuleFilePath(filename), 'utf-8'));
 };
 
-helpers.writeModuleJson = function (filename, contents) {
+iosHelpers.writeModuleJson = function (filename, contents) {
     fs.writeFileSync(getModuleFilePath(filename), JSON.stringify(contents));
 };
 
-helpers.moduleJsonExists = function (filename) {
+iosHelpers.moduleJsonExists = function (filename) {
     return fs.existsSync(getModuleFilePath(filename));
 };
 
-helpers.removeModuleJson = function (filename) {
+iosHelpers.removeModuleJson = function (filename) {
     fs.unlinkSync(getModuleFilePath(filename));
 };
 
-helpers.podInstall = function() {
+iosHelpers.podInstall = function() {
     try{
+        logger.log("pod install");
         exec('pod install', {
-            cwd: path.join(projectDirectory, 'ios'),
+            cwd: helpers.directory.iosProject,
             stdio: 'inherit'
         });
     }catch(e){
@@ -178,4 +168,4 @@ helpers.podInstall = function() {
 };
 
 
-module.exports = helpers;
+module.exports = iosHelpers;
