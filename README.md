@@ -405,8 +405,9 @@ Either:
     - an {array} where the first element is the latitude and the second element is a longitude, as decimal numbers. e.g. [50.1, -4.0]
 - options - optional parameters:
     - {string} app - name of the navigation app to use for directions.
-    Specify using `LaunchNavigator.APP` constants.  e.g. `LaunchNavigator.APP.GOOGLE_MAPS`.
-    If not specified, defaults to user selection via native picker UI.
+        - Specify using `LaunchNavigator.APP` constants.  e.g. `LaunchNavigator.APP.GOOGLE_MAPS`.
+        - If not specified, defaults to the platform default maps app (Google Maps for Android/Apple Maps for iOS).
+        - Note: this module does not currently implement an out-of-the-box picker UI so it's up to the app developer to implement a UI with which the user can specify which available navigation app they want to use.
     - {string} destinationName - nickname to display in app for destination. e.g. "Bob's House".
     - start (optional): start location to use for navigation.
     If not specified, the current device location will be used.
