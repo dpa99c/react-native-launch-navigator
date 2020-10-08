@@ -1,4 +1,15 @@
 # CHANGELOG
+
+## 1.0.8
+- Merge [PR#30](https://github.com/dpa99c/react-native-launch-navigator/pull/30): Fix for Android X
+- Merge [PR#31](https://github.com/dpa99c/react-native-launch-navigator/pull/30):  (Android) discover apps on `getAvailableApps()` call
+- (iOS) Rework hook scripts to detect development platform and projects so as to only run iOS-specific hooks if iOS platform project exists and development platform is OSX.
+    - Resolves [#36](https://github.com/dpa99c/react-native-launch-navigator/issues/36)
+-  (Doc): Remove erroneous reference to native picker UI and make it clear that none is provided out-of-the-box.
+    - Resolves [#33](https://github.com/dpa99c/react-native-launch-navigator/issues/33)
+- (iOS): Remove postinstall/postlink scripts and document manual process to replace them.
+    - Resolves [#34](https://github.com/dpa99c/react-native-launch-navigator/issues/34)
+
 ## 1.0.7
 - Merge [PR#18](https://github.com/dpa99c/react-native-launch-navigator/pull/18): Use project's minSdkVersion if available
 - Merge [PR#20](https://github.com/dpa99c/react-native-launch-navigator/pull/20): Update `build.gradle` to use `implementation` instead of deprecated `compile` directive.
