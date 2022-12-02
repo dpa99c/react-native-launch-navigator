@@ -3,7 +3,11 @@
 // Definitions by: Dave Alden <https://github.com/dpa99c>
 // Usage: import { LaunchNavigator, LaunchNavigatorOptions } from 'react-native-launch-navigator';
 
-export interface LaunchNavigatorOptions {
+
+declare module 'react-native-launch-navigator' {
+  type APP_KEYS = "APPLE_MAPS" | "GOOGLE_MAPS" | "WAZE" | "CITYMAPPER" | "NAVIGON" | "TRANSIT_APP" | "YANDEX" | "UBER" | "TOMTOM" | "BING_MAPS" | "SYGIC" | "HERE_MAPS" | "MOOVIT" | "LYFT" | "MAPS_ME" | "CABIFY" | "BAIDU" | "TAXIS_99" | "GAODE";
+  
+  export interface LaunchNavigatorOptions {
 
     /**
      * name of the navigation app to use for directions.
@@ -57,9 +61,9 @@ export interface LaunchNavigatorOptions {
      * If true, and input location type(s) doesn't match those required by the app, use geocoding to obtain the address/coords as required. Defaults to true.
      */
     enableGeocoding?: boolean;
-}
+  }
 
-export interface LaunchNavigator {
+  const LaunchNavigator: {
 
     /**
      * Supported platforms
@@ -69,7 +73,7 @@ export interface LaunchNavigator {
     /**
      * string constants, used to identify apps in native code
      */
-    APP: any;
+    APP: Record<APP_KEYS, string>;
 
     /**
      * All possible transport modes
@@ -97,7 +101,7 @@ export interface LaunchNavigator {
     navigate: (
         destination: string | number[], 
         options?: LaunchNavigatorOptions
-    ) => Promise;
+    ) => Promise<void>;
     
     logEvent: (name: string, params?: any, valueToSum?: number) => void;
 
@@ -114,7 +118,7 @@ export interface LaunchNavigator {
      * Returns a list indicating which apps are installed and available on the current device.
      * @return {object} - a key/value object where the key is the app name as a constant in `LaunchNavigator.APP` and the value is a boolean indicating whether the app is available.
      */
-    getAvailableApps: () => object;
+    getAvailableApps: () => Promise<Record<string, boolean>>;
 
     /**
      * Returns the display name of the specified app.
@@ -215,4 +219,7 @@ export interface LaunchNavigator {
     enableDebug: (
         enabled: boolean
     ) => void;
+  }
+
+  export default LaunchNavigator;
 }
