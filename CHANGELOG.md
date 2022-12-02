@@ -1,5 +1,10 @@
 # CHANGELOG
 
+
+## 1.0.9
+- (types) bugfix: Apply patch to fix `index.d.ts`
+- Merge [PR#38](https://github.com/dpa99c/react-native-launch-navigator/pull/38): Android 11 (API 30) target support
+
 ## 1.0.8
 - Merge [PR#30](https://github.com/dpa99c/react-native-launch-navigator/pull/30): Fix for Android X
 - Merge [PR#31](https://github.com/dpa99c/react-native-launch-navigator/pull/30):  (Android) discover apps on `getAvailableApps()` call
