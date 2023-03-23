@@ -211,6 +211,14 @@ declare module 'react-native-launch-navigator' {
         platform: string,
         launchMode?: string
     ) => boolean;
+        
+    /**
+     * Sets the Google API key to use for the Google Geocoder API on Android.
+     * @param {string} googleApiKey - the API key to use for the Geocoder API on Android.
+     */
+    setGoogleApiKey: (
+        googleApiKey: string
+    ) => void
 
     /**
      * Enables debug log output from the plugin to the JS and native consoles. By default debug is disabled.
